@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>I-Blast Help Redirect...</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// Récupération des paramètres de l'URL
+			// Pour le test : 
+			//const urlParams = new URL("https://www.wiki.i-blast.tbtech.fr/?language=fr&window=FEN_AnalyseSismique").searchParams;
+			const urlParams = new URL(window.location.toLocaleString()).searchParams;
+			const pLanguage = urlParams.get('language');
+			const pWindow = urlParams.get('window');
+			
+			// Définition de l'URL d'accès
+			let redirectURL = "https://www.wiki.i-blast.tbtech.fr/";
+			
+			// Ajout de la langue à l'URL
+			redirectURL += pLanguage + "/";
+			
+			// Ajout du répertoire du projet
+			redirectURL += "IBlast/";
+			
+			// Gestion de la page d'aide
+			switch(pWindow) {
+				case "FEN_ADMIN":
+					redirectURL += "Divers/usermanagement";
+					break;
+					
+				case "FEN_LOGIN":
+					redirectURL += "login";
+					break;
+				
+				case "FEN_ANALYSESISMIQUE":
+					redirectURL += "BlastManagement/Analysis/Seismic";
+					break;
+					
+				case "FEN_ANALYSETROUSIGNATURE_FREQ":
+					redirectURL += "BlastManagement/Analysis/SignatureHole";
+					break;
+					
+				case "FEN_ATTENUATIONLAW":
+					redirectURL += "BlastManagement/Analysis/AttenuationLaw";
+					break;
+					
+				case "FEN_BILAN_CARBONE":
+					redirectURL += "BlastManagement/Analysis/GHG";
+					break;
+					
+				case "FEN_MODELES_CHARGEMENT":
+					redirectURL += "BlastManagement/Databases/Loading";
+					break;
+					
+				case "FEN_ENREGISTREMENTSSIMIQUES":
+					redirectURL += "BlastManagement/Measures/seismicRecords";
+					break;
+					
+				case "FEN_FORATION":
+					redirectURL += "BlastManagement/Analysis/Drilling";
+					break;
+					
+				case "FEN_FRAGCAST":
+					redirectURL += "BlastManagement/Simulations/FragmentationCastSimulation";
+					break;
+					
+				case "FEN_MODELE_GEOLOGIE":
+					redirectURL += "BlastManagement/Databases/Geology";
+					break;
+					
+				case "FEN_GESTION_NUAGE_V2":
+					redirectURL += "BlastManagement/Databases/Gestion_de_nuages";
+					break;
+					
+				case "FEN_GESTION_TIRS":
+					redirectURL += "BlastManagement";
+					break;
+					
+				case "FEN_OPTIONS":
+					redirectURL += "BlastManagement/Global/options";
+					break;
+					
+				case "FEN_VUE3D":
+					redirectURL += "3Dview";
+					break;
+					
+				case "FEN_ZONES_RESULTATS":
+					redirectURL += "BlastManagement/Simulations/SeismicZones";
+					break;
+				
+				case "FEN_DESIGN":
+					redirectURL += "Design"
+					break;
+					
+				case "FEN_PARAM_SIM_PROJ3D":
+					redirectURL += "3DView/DigitalTwin"
+					break;
+					
+				case "FEN_FONDDEPLAN":
+					redirectURL += "Design/design/Fond_de_plan"
+					break;
+					
+				case "FEN_GENERATION_POINTCLOUD_2":
+					redirectURL += "Design/measures/genPointCloud.md"
+					break;
+					
+				case "FEN_DNAFRAG":
+					redirectURL += "BlastManagement/Measures/DNAFrag"
+					break;
+					
+				case "FEN_ANALYSEOVERLAP":
+					redirectURL += "BlastManagement/Analysis/Overlap"
+					break;
+					
+				case "FEN_AUDIT_FORATION":
+					redirectURL += "BlastManagement/Analysis/Drilling"
+					break;
+
+				case "FEN_AUTODRONE":
+					redirectURL += "Design/base/autodrone";
+					break;
+
+				case "FEN_SIMVIBRATIONVEHICULE":
+					redirectURL += "Design/simulation/enginmeca";
+					break;
+					
+				case "FEN_POST_TRAITEMENT_ODM":
+					redirectURL += "Design/measures/genPointCloud/FEN_PostTraitement";
+					break;
+					
+				case "FEN_FRAG_3D_RES":
+					redirectURL += "3DView/DigitalTwin/FragmentationResults";
+					break;
+					
+				case "FEN_IMPORTHOLESCHARGESEXCEL":
+					redirectURL += "Design/design/ImportHolesXLS";
+					break;
+					
+				case "FEN_IMPORTER_ZONES_EXCEL":
+					redirectURL += "Design/design/ImportZonesXLS";
+					break;
+					
+				case "FEN_PALLETTE_NP":
+					redirectURL += "Design/display/pointcloud_tools";
+					break;
+					
+				case "FEN_SEL_EXPLO":
+					redirectURL += "Divers/popupExplosive";
+					break;
+					
+				case "FEN_CHARGEMENT_PLUS":
+					redirectURL += "Design/design/SmartLoading";
+					break;
+					
+				case "FEN_3DSIM_ANA_PARAM":
+					redirectURL += "BlastManagement/Simulations/VoxelParameters";
+					break;
+					
+				default:
+					redirectURL += "BlastManagement";
+			}
+			
+			// Redirection
+			window.location.href = redirectURL;
+		</script>
+	</body>
+</html>
