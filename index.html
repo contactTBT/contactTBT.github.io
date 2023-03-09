@@ -9,8 +9,11 @@
 			// Pour le test : 
 			//const urlParams = new URL("https://www.wiki.i-blast.tbtech.fr/?language=fr&window=FEN_AnalyseSismique").searchParams;
 			const urlParams = new URL(window.location.toLocaleString()).searchParams;
-			const pLanguage = urlParams.get('language');
+			let pLanguage = urlParams.get('language');
 			const pWindow = urlParams.get('window');
+			
+			//verification langue
+			if (pLanguage!="fr") pLanguage="fr";
 			
 			// Définition de l'URL d'accès
 			let redirectURL = "https://www.wiki.i-blast.tbtech.fr/";
