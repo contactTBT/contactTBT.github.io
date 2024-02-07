@@ -5,6 +5,12 @@
 	</head>
 	<body>
 		<script type="text/javascript">
+			function selectLanguage(desiredLanguage, availableLanguages) {
+				//check if the language is available and return the first available language if not
+				if (availableLanguages.indexOf(desiredLanguage)>=0) return desiredLanguage;
+				else return availableLanguages[0];
+			}
+		
 			// Récupération des paramètres de l'URL
 			// Pour le test : 
 			//const urlParams = new URL("https://www.wiki.i-blast.tbtech.fr/?language=fr&window=FEN_AnalyseSismique").searchParams;
@@ -12,177 +18,209 @@
 			let pLanguage = urlParams.get('language');
 			const pWindow = urlParams.get('window');
 			
-			//verification langue
-			if (pLanguage!="fr") pLanguage="fr";
-			
 			// Définition de l'URL d'accès
 			let redirectURL = "https://www.wiki.i-blast.tbtech.fr/";
-			
-			// Ajout de la langue à l'URL
-			redirectURL += pLanguage + "/";
-			
-			// Ajout du répertoire du projet
-			redirectURL += "IBlast/";
-			
+				
+			let page = "";
+			let availableLanguages = ["fr"];
 			// Gestion de la page d'aide
 			switch(pWindow) {
 				case "FEN_ADMIN":
-					redirectURL += "Divers/usermanagement";
+					availableLanguages = ["fr"];
+					page = "Misc/usermanagement";
 					break;
 					
 				case "FEN_LOGIN":
 				case "FEN_CONNEXION_BASE_CS":
 				case "FEN_ACTIVATION_USB":
 				case "FEN_CONNECTION_SERVEUR":
-					redirectURL += "login";
-					break;
-				
+					availableLanguages = ["en","fr"];
+					page = "login";
+					break;	
+									
 				case "FEN_ANALYSESISMIQUE":
-					redirectURL += "BlastManagement/Analysis/Seismic";
+					availableLanguages = ["en","fr"];
+					page = "BlastManagement/Analysis/Seismic";
 					break;
 					
 				case "FEN_ANALYSETROUSIGNATURE_FREQ":
-					redirectURL += "BlastManagement/Analysis/SignatureHole";
+					availableLanguages = ["en","fr"];
+					page = "BlastManagement/Analysis/SignatureHole";
 					break;
 					
 				case "FEN_ATTENUATIONLAW":
-					redirectURL += "BlastManagement/Analysis/AttenuationLaw";
+					availableLanguages = ["fr"];
+					page = "BlastManagement/Analysis/AttenuationLaw";
 					break;
 					
 				case "FEN_BILAN_CARBONE":
-					redirectURL += "BlastManagement/Analysis/GHG";
+					availableLanguages = ["fr"];
+					page = "BlastManagement/Analysis/GHG";
 					break;
 					
 				case "FEN_MODELES_CHARGEMENT":
-					redirectURL += "BlastManagement/Databases/Loading";
+					availableLanguages = ["fr"];
+					page = "BlastManagement/Databases/Loading";
 					break;
 
 				case "FEN_MODELES_EXPLOSIFS":
-					redirectURL += "BlastManagement/Databases/Explosives";
+					availableLanguages = ["fr"];
+					page = "BlastManagement/Databases/Explosives";
 					break;
 					
 				case "FEN_ENREGISTREMENTSSIMIQUES":
-					redirectURL += "BlastManagement/Measures/seismicRecords";
+					availableLanguages = ["fr"];
+					page = "BlastManagement/Measures/seismicRecords";
 					break;
 					
 				case "FEN_FORATION":
-					redirectURL += "BlastManagement/Analysis/Drilling";
+					availableLanguages = ["en","fr"];
+					page = "Design/analysis/drillingAnalysis";
 					break;
 					
 				case "FEN_FRAGCAST":
-					redirectURL += "BlastManagement/Simulations/FragmentationCastSimulation";
+					availableLanguages = ["fr"];
+					page = "BlastManagement/Simulations/FragmentationCastSimulation";
 					break;
 					
 				case "FEN_MODELE_GEOLOGIE":
-					redirectURL += "BlastManagement/Databases/Geology";
+					availableLanguages = ["fr"];
+					page = "BlastManagement/Databases/Geology";
 					break;
 					
 				case "FEN_GESTION_NUAGE_V2":
-					redirectURL += "BlastManagement/Measures/Gestion_de_nuages";
+					availableLanguages = ["fr"];
+					page = "BlastManagement/Measures/pointclouds";
 					break;
 					
 				case "FEN_GESTION_TIRS":
-					redirectURL += "BlastManagement";
+					availableLanguages = ["en","fr"];
+					page = "BlastManagement";
 					break;
 					
 				case "FEN_OPTIONS":
-					redirectURL += "BlastManagement/Global/options";
+					availableLanguages = ["fr"];
+					page = "BlastManagement/Global/options";
 					break;
 					
 				case "FEN_VUE3D":
-					redirectURL += "3DView";
+					availableLanguages = ["en","fr"];
+					page = "3DView";
 					break;
 					
 				case "FEN_ZONES_RESULTATS":
-					redirectURL += "BlastManagement/Simulations/SeismicZones";
+					availableLanguages = ["fr"];
+					page = "BlastManagement/Simulations/SeismicZones";
 					break;
 				
 				case "FEN_DESIGN":
-					redirectURL += "Design"
+					availableLanguages = ["en","fr"];
+					page = "Design"
 					break;
 					
 				case "FEN_PARAM_SIM_PROJ3D":
-					redirectURL += "3DView/DigitalTwin"
+					availableLanguages = ["en","fr"];
+					page = "3DView/DigitalTwin"
 					break;
 					
 				case "FEN_FONDDEPLAN":
-					redirectURL += "Design/design/Fond_de_plan"
+					availableLanguages = ["fr"];
+					page = "Design/design/background"
 					break;
 					
 				case "FEN_GENERATION_POINTCLOUD_2":
-					redirectURL += "Design/measures/genPointCloud.md"
+					availableLanguages = ["fr"];
+					page = "Design/measures/genPointCloud"
 					break;
 					
 				case "FEN_DNAFRAG":
-					redirectURL += "BlastManagement/Measures/DNAFrag"
+					availableLanguages = ["fr"];
+					page = "BlastManagement/Measures/DNAFrag"
 					break;
 					
 				case "FEN_ANALYSEOVERLAP":
-					redirectURL += "BlastManagement/Analysis/Overlap"
+					availableLanguages = ["fr"];
+					page = "BlastManagement/Analysis/Overlap"
 					break;
 					
 				case "FEN_AUDIT_FORATION":
-					redirectURL += "Design/analysis/drillingAnalysis"
+					availableLanguages = ["en","fr"];
+					page = "Design/analysis/drillingAnalysis"
 					break;
 
 				case "FEN_AUTODRONE":
-					redirectURL += "Design/base/autodrone";
+					availableLanguages = ["fr"];
+					page = "Design/base/autodrone";
 					break;
 
 				case "FEN_SIMVIBRATIONVEHICULE":
-					redirectURL += "Design/simulation/enginmeca";
+					availableLanguages = ["fr"];
+					page = "Design/simulation/mecaEquipment";
 					break;
 					
 				case "FEN_POST_TRAITEMENT_ODM":
-					redirectURL += "Design/measures/genPointCloud/FEN_PostTraitement";
+					availableLanguages = ["fr"];
+					page = "Design/measures/genPointCloud/postprocessing";
 					break;
 					
 				case "FEN_FRAG_3D_RES":
-					redirectURL += "3DView/DigitalTwin/FragmentationResults";
+					availableLanguages = ["fr"];
+					page = "3DView/DigitalTwin/FragmentationResults";
 					break;
 					
 				case "FEN_IMPORTHOLESCHARGESEXCEL":
-					redirectURL += "Design/design/ImportHolesXLS";
+					availableLanguages = ["fr"];
+					page = "Design/design/ImportHolesXLS";
 					break;
 					
 				case "FEN_IMPORTER_ZONES_EXCEL":
-					redirectURL += "Design/design/ImportZonesXLS";
+					availableLanguages = ["fr"];
+					page = "Design/design/ImportZonesXLS";
 					break;
 					
 				case "FEN_PALLETTE_NP":
-					redirectURL += "Design/display/pointcloud_tools";
+					availableLanguages = ["en","fr"];
+					page = "Design/display/pointcloud_tools";
 					break;
 					
 				case "FEN_SEL_EXPLO":
-					redirectURL += "Divers/popupExplosive";
+					availableLanguages = ["fr"];
+					page = "Misc/popupExplosive";
 					break;
 					
 				case "FEN_CHARGEMENT_PLUS":
-					redirectURL += "Design/design/SmartLoading";
+					availableLanguages = ["fr"];
+					page = "Design/design/SmartLoading";
 					break;
 					
 				case "FEN_3DSIM_ANA_PARAM":
-					redirectURL += "BlastManagement/Simulations/VoxelParameters";
+					availableLanguages = ["fr"];
+					page = "BlastManagement/Simulations/VoxelParameters";
 					break;
 					
 				case "FEN_COULEUR_TROUS":
-					redirectURL += "Design/display/HoleColor";
+					availableLanguages = ["fr"];
+					page = "Design/display/HoleColor";
 					break;	
 				case "FEN_MOD3D":
-					redirectURL += "BlastManagement/Databases/3DModels";
+					availableLanguages = ["fr"];
+					page = "BlastManagement/Databases/3DModels";
 					break;	
 				case "FEN_GEOLOGIE":
-					redirectURL += "Design/design/Geology";
+					availableLanguages = ["en","fr"];
+					page = "Design/design/Geology";
 					break;	
 				case "FEN_DESIGN_VIEWINFO"
-					redirectURL += "Design/global/viewinfo";
+					availableLanguages = ["en","fr"];
+					page = "Design/global/viewinfo";
 					break;	
 				default:
-					redirectURL += "BlastManagement";
+					availableLanguages = ["en","fr"];
+					page = "BlastManagement";
 			}
 			
 			// Redirection
-			window.location.href = redirectURL;
+			window.location.href = redirectURL + selectLanguage(pLanguage, availableLanguages) + "/IBlast/" + page;
 		</script>
 	</body>
 </html>
