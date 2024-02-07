@@ -5,12 +5,6 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-			function selectLanguage(desiredLanguage, availableLanguages) {
-				//check if the language is available and return the first available language if not
-				if (availableLanguages.indexOf(desiredLanguage)>=0) return desiredLanguage;
-				else return availableLanguages[0];
-			}
-		
 			// Récupération des paramètres de l'URL
 			// Pour le test : 
 			//const urlParams = new URL("https://www.wiki.i-blast.tbtech.fr/?language=fr&window=FEN_AnalyseSismique").searchParams;
@@ -219,8 +213,12 @@
 					page = "BlastManagement";
 			}
 			
+			//select language
+			let pLanguagePage = availableLanguages[0];
+			if (availableLanguages.indexOf(pLanguage)>=0) {pLanguagePage=pLanguage;}
+						
 			// Redirection
-			window.location.href = redirectURL + selectLanguage(pLanguage, availableLanguages) + "/IBlast/" + page;
+			window.location.href = redirectURL + pLanguagePage + "/IBlast/" + page;
 		</script>
 	</body>
 </html>
