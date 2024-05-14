@@ -11,9 +11,14 @@
 			const urlParams = new URL(window.location.toLocaleString()).searchParams;
 			let pLanguage = urlParams.get('language');
 			const pWindow = urlParams.get('window');
+			const beta 	  = urlParams.get('beta');
 			
 			// Définition de l'URL d'accès
 			let redirectURL = "https://www.wiki.i-blast.tbtech.fr/";
+			if (beta == 1) {
+				redirectURL = "https://develop.wiki.i-blast.tbtech.fr/";
+			}
+			
 				
 			let page = "";
 			let availableLanguages = ["fr"];
