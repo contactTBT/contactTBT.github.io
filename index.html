@@ -48,10 +48,15 @@
 					break;
 					
 				case "FEN_ATTENUATIONLAW":
-					availableLanguages = ["fr"];
+					availableLanguages = ["en","fr"];
 					page = "BlastManagement/Analysis/AttenuationLaw";
 					break;
-					
+				case "FEN_CALC_CHAPOT":
+					availableLanguages = ["en","fr"];
+					page = "BlastManagement/Analysis/AttenuationLaw";
+					if(pLanguage=="fr") {page+="#calculatrice";}
+					else {page+="#calculator";}
+					break;
 				case "FEN_BILAN_CARBONE":
 					availableLanguages = ["fr"];
 					page = "BlastManagement/Analysis/GHG";
