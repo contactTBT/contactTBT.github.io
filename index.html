@@ -277,17 +277,22 @@
 						page = "Design/design/ImportDXF";
 						break;
 					}
+				case "FEN_PARAMS_ODM":
+					window.location.href = "https://docs.opendronemap.org/arguments/"
+					break;
 				default:
 					availableLanguages = ["en","fr"];
 					page = "BlastManagement";
 			}
 			
-			//select language
-			let pLanguagePage = availableLanguages[0];
-			if (availableLanguages.indexOf(pLanguage)>=0) {pLanguagePage=pLanguage;}
-						
-			// Redirection
-			window.location.href = redirectURL + pLanguagePage + "/IBlast/" + page;
+			if (page!=""){
+				//select language
+				let pLanguagePage = availableLanguages[0];
+				if (availableLanguages.indexOf(pLanguage)>=0) {pLanguagePage=pLanguage;}
+							
+				// Redirection
+				window.location.href = redirectURL + pLanguagePage + "/IBlast/" + page;
+			}
 		</script>
 	</body>
 </html>
