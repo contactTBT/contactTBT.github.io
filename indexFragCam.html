@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DNA-FragCam Help Redirect...</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// Récupération des paramètres de l'URL
+			const urlParams = new URL(window.location.toLocaleString()).searchParams;
+			let pLanguage = urlParams.get('language');
+			const pWindow = urlParams.get('window');
+			
+			// Définition de l'URL d'accès
+			let redirectURL = "https://wiki.fragcam.tbtech.fr/";
+			
+			let page = "";
+			let availableLanguages = ["fr"];
+			// Gestion de la page d'aide
+			switch(pWindow) {
+				default:
+					availableLanguages = ["en","fr"];
+					page = "home";
+			}
+			
+			if (page!=""){
+				//select language
+				let pLanguagePage = availableLanguages[0];
+				if (availableLanguages.indexOf(pLanguage)>=0) {pLanguagePage=pLanguage;}
+							
+				// Redirection
+				window.location.href = redirectURL + pLanguagePage + "/IBlast/" + page;
+			}
+		</script>
+	</body>
+</html>
