@@ -18,8 +18,8 @@
 			// Gestion de la page d'aide
 			switch(pWindow) {
 				default:
-					availableLanguages = ["en","fr"];
-					page = "home";
+					availableLanguages = ["en"];
+					page = "FragCam";
 			}
 			
 			if (page!=""){
@@ -28,7 +28,7 @@
 				if (availableLanguages.indexOf(pLanguage)>=0) {pLanguagePage=pLanguage;}
 							
 				// Redirection
-				window.location.href = redirectURL + pLanguagePage + "/IBlast/" + page;
+				window.location.href = redirectURL + pLanguagePage + "/" + page;
 			}
 		</script>
 	</body>
