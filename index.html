@@ -281,6 +281,15 @@
 				case "FEN_PARAMS_ODM":
 					window.location.href = "https://docs.opendronemap.org/arguments/"
 					break;
+				case "FEN_TABLETROUS":
+					availableLanguages = ["en","fr"];
+					page = "Design/analysis/holes_table";
+					break;
+				case "FEN_MODIF_ANNOT":
+				case "FEN_TABLE_ANNOTATION":
+					availableLanguages = ["en","fr"];
+					page = "Design/global#annotation";
+					break;
 				default:
 					availableLanguages = ["en","fr"];
 					page = "BlastManagement";
